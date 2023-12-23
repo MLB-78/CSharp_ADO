@@ -12,8 +12,7 @@ namespace MYSQL___ADO
 {
     public partial class Form1 : Form
     {
-        private string connectionString = "server=btssio.dedyn.io;port=3306;Database=NJOBOJO_Bibli;Uid=NJOBOJO;password=njobojo;";
-        private MySqlConnection maConnection;
+       
         private MySqlCommand maRequete;
         private MySqlDataReader monReader;
 
@@ -28,9 +27,9 @@ namespace MYSQL___ADO
         {
             try 
             {
-                maConnection = new MySqlConnection(connectionString);
-                maConnection.Open();
-                maRequete = maConnection.CreateCommand();
+                dgv_ListeAuteurs.Rows.Clear();
+                Connection.MaConnection.Open() ;
+                maRequete = Connection.MaConnection.CreateCommand();
                 maRequete.CommandText = "select * from auteur order by nom";
                 monReader = maRequete.ExecuteReader();
                 while (monReader.Read()) {
@@ -42,7 +41,6 @@ namespace MYSQL___ADO
                             monReader["nationalite"].ToString()
 
                         );
-                
                 }
 
             }
@@ -50,6 +48,11 @@ namespace MYSQL___ADO
             {
 
                 MessageBox.Show("erreur :" + ex.Message);
+            }finally {
+                
+                monReader.Close();
+                Connection.MaConnection.Close();
+            
             }
         }
 
@@ -57,6 +60,7 @@ namespace MYSQL___ADO
         {
 
         }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -66,10 +70,19 @@ namespace MYSQL___ADO
         private void button1_Click(object sender, EventArgs e)
         {
 
+            int element = Convert.ToInt16( dgv_ListeAuteurs.SelectedRows[0].Cells[0].Value.ToString());
+            FicheAuteur frm = new FicheAuteur(false, element);          
+            frm.Show();
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            int element = Convert.ToInt16(dgv_ListeAuteurs.SelectedRows[0].Cells[0].Value.ToString());
+            FicheAuteur frm = new FicheAuteur(true, element);
+            frm.Show();
+            RemplirListe();
+            dgv_ListeAuteurs.Refresh();
 
         }
 

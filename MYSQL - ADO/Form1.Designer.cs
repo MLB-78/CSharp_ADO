@@ -51,10 +51,12 @@
             this.Prenom,
             this.Nation});
             this.dgv_ListeAuteurs.Location = new System.Drawing.Point(53, 22);
+            this.dgv_ListeAuteurs.MultiSelect = false;
             this.dgv_ListeAuteurs.Name = "dgv_ListeAuteurs";
             this.dgv_ListeAuteurs.ReadOnly = true;
             this.dgv_ListeAuteurs.RowHeadersWidth = 51;
             this.dgv_ListeAuteurs.RowTemplate.Height = 24;
+            this.dgv_ListeAuteurs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_ListeAuteurs.Size = new System.Drawing.Size(553, 486);
             this.dgv_ListeAuteurs.TabIndex = 0;
             this.dgv_ListeAuteurs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
