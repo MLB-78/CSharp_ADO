@@ -16,5 +16,6 @@ namespace MYSQL___ADO
         public global::System.String Prenom { get => prenom; set => prenom = value; }
         public global::System.String Nom { get => nom; set => nom = value; }
         public global::System.String Nationalite { get => nationalite; set => nationalite = value; }
+        public short Num { get; internal set; }
     }
 }

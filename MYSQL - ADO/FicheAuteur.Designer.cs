@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.BindingSource bs;
             this.lab_num = new System.Windows.Forms.Label();
             this.lab_nom = new System.Windows.Forms.Label();
             this.lab_prenom = new System.Windows.Forms.Label();
@@ -38,6 +40,8 @@
             this.textNationalite = new System.Windows.Forms.TextBox();
             this.btn_annule = new System.Windows.Forms.Button();
             this.btn_valider = new System.Windows.Forms.Button();
+            bs = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(bs)).BeginInit();
             this.SuspendLayout();
             // 
             // lab_num
@@ -79,6 +83,7 @@
             // 
             // textNum
             // 
+            this.textNum.DataBindings.Add(new System.Windows.Forms.Binding("Text", bs, "Num", true));
             this.textNum.Location = new System.Drawing.Point(198, 43);
             this.textNum.Name = "textNum";
             this.textNum.Size = new System.Drawing.Size(100, 22);
@@ -87,6 +92,7 @@
             // 
             // textNom
             // 
+            this.textNom.DataBindings.Add(new System.Windows.Forms.Binding("Text", bs, "Nom", true));
             this.textNom.Location = new System.Drawing.Point(198, 92);
             this.textNom.Name = "textNom";
             this.textNom.Size = new System.Drawing.Size(100, 22);
@@ -95,6 +101,7 @@
             // 
             // textPrenom
             // 
+            this.textPrenom.DataBindings.Add(new System.Windows.Forms.Binding("Text", bs, "Prenom", true));
             this.textPrenom.Location = new System.Drawing.Point(198, 135);
             this.textPrenom.Name = "textPrenom";
             this.textPrenom.Size = new System.Drawing.Size(100, 22);
@@ -102,10 +109,12 @@
             // 
             // textNationalite
             // 
+            this.textNationalite.DataBindings.Add(new System.Windows.Forms.Binding("Text", bs, "Nationalite", true));
             this.textNationalite.Location = new System.Drawing.Point(198, 186);
             this.textNationalite.Name = "textNationalite";
             this.textNationalite.Size = new System.Drawing.Size(100, 22);
             this.textNationalite.TabIndex = 9;
+            this.textNationalite.TextChanged += new System.EventHandler(this.textNationalite_TextChanged);
             // 
             // btn_annule
             // 
@@ -127,13 +136,20 @@
             this.btn_valider.UseVisualStyleBackColor = true;
             this.btn_valider.Click += new System.EventHandler(this.btn_valider_Click);
             // 
+            // bs
+            // 
+            bs.AllowNew = false;
+            bs.DataSource = typeof(MYSQL___ADO.Auteur);
+            bs.BindingComplete += new System.Windows.Forms.BindingCompleteEventHandler(this.bs_BindingComplete);
+            bs.CurrentChanged += new System.EventHandler(this.bs_CurrentChanged);
+            // 
             // FicheAuteur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(326, 450);
             this.Controls.Add(this.btn_valider);
             this.Controls.Add(this.btn_annule);
             this.Controls.Add(this.textNationalite);
@@ -147,6 +163,7 @@
             this.Name = "FicheAuteur";
             this.Text = "FicheAuteur";
             this.Load += new System.EventHandler(this.FicheAuteur_Load);
+            ((System.ComponentModel.ISupportInitialize)(bs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
