@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MYSQL_ADO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +15,11 @@ namespace MYSQL___ADO
     public partial class FicheAuteur : Form
     {
 
-        private int numAuteur;
-        Auteur AuteurCourant = new Auteur();
         private BindingSource bs = new BindingSource();
+        private int numAuteur;
         private bool v;
         private int element;
+        Auteur AuteurCourant = new Auteur();
 
         public FicheAuteur(bool modification,Auteur monAuteur=null)
         {
@@ -27,7 +28,8 @@ namespace MYSQL___ADO
             {
                 if(monAuteur!=null)
                 {
-                    AuteurCourant=monAuteur;
+                    bs.DataSource = monAuteur;
+                    AuteurCourant =monAuteur;
                 }   
                 bs.DataSource=AuteurCourant;
                
@@ -86,42 +88,29 @@ namespace MYSQL___ADO
         {
             if (ContoleSaisies() == true)
             {
-                //maRequete.CommandText = "update auteur set " +
-                //"nom=@paramNom, prenom=@paramPrenom, nationalite=@paramNation where num=@paramNum";
-                //maRequete.Parameters.Clear();
-                //maRequete.Parameters.AddWithValue("@paramNom", textNom.Text);
-                //maRequete.Parameters.AddWithValue("@paramPrenom", textPrenom.Text);
-                //maRequete.Parameters.AddWithValue("@paramNation", textNationalite.Text);
-                //maRequete.Parameters.AddWithValue("@paramNum", numAuteur);
-                //try
-                //{
-                // Connection.MaConnection.Open();
-                //int resultat = maRequete.ExecuteNonQuery();
-                //   if (resultat > 0)
-                //{
-                //MessageBox.Show("L'auteur a bien été mis à jour");
-                // }
-                //else
-                //  {
-                //  MessageBox.Show("Une erreur s'est produite, l'auteur n'a pas été mis à jour");
-                //}
-                // }
-                //   catch (Exception ex)
-                // {
-                //  MessageBox.Show(ex.Message);
-                // }
-                //  finally
-                // {
-                // Connection.MaConnection.Close();
-                // this.Close();
-                // }
+                try
+                {
+                    if (AuteurCourant.Num == 0)
+                    {
+                        AuteurCourant = bs.Current as Auteur;
+                        bool reponse = ManageurAuteur.AjouterAuteur(AuteurCourant, maRequete);
+                    }
+                    else
+                    {
+                        AuteurCourant = bs.Current as Auteur;
+                        bool reponse = ManageurAuteur.ModifierAuteur(AuteurCourant);
+                    }
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                   
+                }
+               
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+     
         private bool ContoleSaisies()
         {
             bool controle = true;

@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgv_ListeAuteurs = new System.Windows.Forms.DataGridView();
-            this.btn_Afficher = new System.Windows.Forms.Button();
-            this.btn_modifier = new System.Windows.Forms.Button();
-            this.btn_supprimer = new System.Windows.Forms.Button();
-            this.btn_nouveau = new System.Windows.Forms.Button();
-            this.bs = new System.Windows.Forms.BindingSource(this.components);
             this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bs = new System.Windows.Forms.BindingSource(this.components);
+            this.btn_Afficher = new System.Windows.Forms.Button();
+            this.btn_modifier = new System.Windows.Forms.Button();
+            this.btn_supprimer = new System.Windows.Forms.Button();
+            this.btn_nouveau = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ListeAuteurs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs)).BeginInit();
             this.SuspendLayout();
@@ -65,45 +65,6 @@
             this.dgv_ListeAuteurs.Size = new System.Drawing.Size(554, 486);
             this.dgv_ListeAuteurs.TabIndex = 0;
             this.dgv_ListeAuteurs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // btn_Afficher
-            // 
-            this.btn_Afficher.Location = new System.Drawing.Point(647, 68);
-            this.btn_Afficher.Name = "btn_Afficher";
-            this.btn_Afficher.Size = new System.Drawing.Size(75, 23);
-            this.btn_Afficher.TabIndex = 1;
-            this.btn_Afficher.Text = "Afficher";
-            this.btn_Afficher.UseVisualStyleBackColor = true;
-            this.btn_Afficher.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btn_modifier
-            // 
-            this.btn_modifier.Location = new System.Drawing.Point(647, 121);
-            this.btn_modifier.Name = "btn_modifier";
-            this.btn_modifier.Size = new System.Drawing.Size(75, 23);
-            this.btn_modifier.TabIndex = 2;
-            this.btn_modifier.Text = "Modifier";
-            this.btn_modifier.UseVisualStyleBackColor = true;
-            this.btn_modifier.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // btn_supprimer
-            // 
-            this.btn_supprimer.Location = new System.Drawing.Point(647, 175);
-            this.btn_supprimer.Name = "btn_supprimer";
-            this.btn_supprimer.Size = new System.Drawing.Size(75, 23);
-            this.btn_supprimer.TabIndex = 3;
-            this.btn_supprimer.Text = "Supprimer";
-            this.btn_supprimer.UseVisualStyleBackColor = true;
-            // 
-            // btn_nouveau
-            // 
-            this.btn_nouveau.Location = new System.Drawing.Point(647, 223);
-            this.btn_nouveau.Name = "btn_nouveau";
-            this.btn_nouveau.Size = new System.Drawing.Size(75, 23);
-            this.btn_nouveau.TabIndex = 4;
-            this.btn_nouveau.Text = "Nouveau";
-            this.btn_nouveau.UseVisualStyleBackColor = true;
-            this.btn_nouveau.Click += new System.EventHandler(this.button3_Click);
             // 
             // Num
             // 
@@ -140,6 +101,48 @@
             this.Nation.Name = "Nation";
             this.Nation.ReadOnly = true;
             this.Nation.Width = 125;
+            // 
+            // bs
+            // 
+            // 
+            // btn_Afficher
+            // 
+            this.btn_Afficher.Location = new System.Drawing.Point(647, 68);
+            this.btn_Afficher.Name = "btn_Afficher";
+            this.btn_Afficher.Size = new System.Drawing.Size(75, 23);
+            this.btn_Afficher.TabIndex = 1;
+            this.btn_Afficher.Text = "Afficher";
+            this.btn_Afficher.UseVisualStyleBackColor = true;
+            this.btn_Afficher.Click += new System.EventHandler(this.btn_Afficher_Click);
+            // 
+            // btn_modifier
+            // 
+            this.btn_modifier.Location = new System.Drawing.Point(647, 121);
+            this.btn_modifier.Name = "btn_modifier";
+            this.btn_modifier.Size = new System.Drawing.Size(75, 23);
+            this.btn_modifier.TabIndex = 2;
+            this.btn_modifier.Text = "Modifier";
+            this.btn_modifier.UseVisualStyleBackColor = true;
+            this.btn_modifier.Click += new System.EventHandler(this.btn_Modifier_Click);
+            // 
+            // btn_supprimer
+            // 
+            this.btn_supprimer.Location = new System.Drawing.Point(647, 175);
+            this.btn_supprimer.Name = "btn_supprimer";
+            this.btn_supprimer.Size = new System.Drawing.Size(75, 23);
+            this.btn_supprimer.TabIndex = 3;
+            this.btn_supprimer.Text = "Supprimer";
+            this.btn_supprimer.UseVisualStyleBackColor = true;
+            // 
+            // btn_nouveau
+            // 
+            this.btn_nouveau.Location = new System.Drawing.Point(647, 223);
+            this.btn_nouveau.Name = "btn_nouveau";
+            this.btn_nouveau.Size = new System.Drawing.Size(75, 23);
+            this.btn_nouveau.TabIndex = 4;
+            this.btn_nouveau.Text = "Nouveau";
+            this.btn_nouveau.UseVisualStyleBackColor = true;
+            this.btn_nouveau.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 

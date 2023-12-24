@@ -59,7 +59,7 @@ namespace MYSQL___ADO
 
         }
         //afficher
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_Afficher_Click(object sender, EventArgs e)
         {
 
             Auteur AuteurSelectionne = new Auteur();
@@ -73,33 +73,26 @@ namespace MYSQL___ADO
 
         }
         //modifier
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btn_Modifier_Click(object sender, EventArgs e)
         {
-            Auteur auteurSelectionne = dgv_ListeAuteurs.SelectedRows[0].DataBoundItem as Auteur;
-
-            if (auteurSelectionne != null)
+            Auteur AuteurSelectionne = new Auteur();
+            DataGridViewRow ligne = dgv_ListeAuteurs.SelectedRows[0];
+            AuteurSelectionne = ligne.DataBoundItem as Auteur;
+            if (AuteurSelectionne != null)
             {
-                FicheAuteur frm = new FicheAuteur(true, auteurSelectionne);
+                Form1 frm = new Form1(true, AuteurSelectionne);
                 frm.ShowDialog();
-                RemplirListe();
-                dgv_ListeAuteurs.Refresh();
             }
         }
 
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            int element = Convert.ToInt16(dgv_ListeAuteurs.SelectedRows[0].Cells[0].Value.ToString());
-            FicheAuteur frm = new FicheAuteur(true, element);
-            frm.Show();
-            RemplirListe();
-            dgv_ListeAuteurs.Refresh();
-
-        }
+       
 
         private void button3_Click(object sender, EventArgs e)
         {
 
         }
+
+      
     }
 }

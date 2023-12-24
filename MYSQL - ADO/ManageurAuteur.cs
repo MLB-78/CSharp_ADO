@@ -38,7 +38,7 @@ namespace MYSQL_ADO
                     Auteur unAuteur = ManageurAuteur.DonneAuteurDuReader(monReader);
                     lesAuteurs.Add(unAuteur);
                 }
-            } // La connexion se ferme automatiquement ici grâce à l'utilisation de "using"
+            } 
 
             return lesAuteurs;
         }
@@ -58,9 +58,41 @@ namespace MYSQL_ADO
 
         public static bool AjouterAuteur(Auteur a)
         {
-            bool resultat = true;
-            return resultat;
+            MySqlCommand maRequete = Connection.MaConnection.CreateCommand();
+            bool reponse = false;
+
+            // Use INSERT INTO instead of UPDATE
+            maRequete.CommandText = "INSERT INTO auteur (nom, prenom, nationalite) VALUES (@paramNom, @paramPrenom, @paramNation)";
+            maRequete.Parameters.AddWithValue("@paramNom", a.Nom);
+            maRequete.Parameters.AddWithValue("@paramPrenom", a.Prenom);
+            maRequete.Parameters.AddWithValue("@paramNation", a.Nationalite);
+
+            try
+            {
+                Connection.MaConnection.Open();
+                int resultat = maRequete.ExecuteNonQuery();
+
+                if (resultat > 0)
+                {
+                    MessageBox.Show("L'auteur a bien été ajouté");
+                }
+                else
+                {
+                    MessageBox.Show("Une erreur s'est produite, l'auteur n'a pas été ajouté");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Une exception s'est produite : " + ex.Message);
+            }
+            finally
+            {
+                Connection.MaConnection.Close();
+            }
+
+            return true;
         }
+
 
         public static bool SupprimerAuteur(Auteur a)
         {
